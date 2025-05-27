@@ -44,7 +44,7 @@ const LeadForm = () => {
     setLoading(true);
     try {
       console.log("Sending request with data:", formData);
-      const response = await fetch("http://localhost:5005/api/leads", {
+    const response = await fetch("https://your-backend.onrender.com/api/leads", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
