@@ -1,52 +1,65 @@
-# Lead Alert Generator - Frontend
+Sure! Here's a **short, clean, no-icons** version of the `README.md`:
 
-This project was bootstrapped with Create React App and serves as the frontend for the Lead Alert Generator, a smart lead capture and email notification system.
+---
 
-## Project Overview
+# Lead Generation System with Email Notifications and n8n Automation
 
-The frontend is a React application that provides a user-friendly form for capturing lead details (name, email, company, message). It validates user input, sends the data to a backend server, and displays success or error messages. The application communicates with a Node.js backend and an n8n workflow to process leads and send notifications.
+## Overview
 
-## Available Scripts
+A simple lead generation system that collects user information through a frontend form, processes it with a backend API, and sends an email notification using an automated n8n workflow.
 
-In the frontend directory, you can run the following scripts:
+## Tech Stack
 
-### `npm start`
+* Frontend: React
+* Backend: Node.js (Express)
+* Workflow Automation: n8n
+* Email Service: SMTP (via n8n)
 
-Runs the app in development mode. The application is configured to run on port 3001 to avoid conflicts with other services (e.g., n8n on port 3000).
+## Features
 
-Open `http://localhost:3001` to view it in your browser.
-
-The page will reload when you make changes. You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode. For more information, see the Create React App documentation on running tests: https://facebook.github.io/create-react-app/docs/running-tests
-
-### `npm run build`
-
-Builds the app for production to the `build` folder. It bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified, and the filenames include hashes. Your app will be ready to deploy.
-
-For more information, see the Create React App documentation on deployment: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run eject`
-
-Note: This is a one-way operation. Once you `eject`, you can't go back!
-
-If you need to customize the build tool and configuration, you can `eject` to gain full control over dependencies (webpack, Babel, ESLint, etc.). This command copies all configuration files and transitive dependencies into your project. All commands except `eject` will still work, but they will point to the copied scripts for customization. Use this only if necessary, as the default setup is suitable for most small to medium deployments.
+* Lead form with validation (name and email required)
+* Backend API to receive and forward leads
+* n8n workflow to trigger email notifications
 
 ## Setup Instructions
 
-### Prerequisites
-
-- Node.js (version 18 or higher) and npm
-- A running backend server on `http://localhost:5005` (see the backend README)
-- A browser to access the application
-
-### Step 1: Install Dependencies
-
-Navigate to the frontend directory and install the required packages.
+### Frontend
 
 ```bash
-npm install
+npx create-react-app frontend
+cd frontend
+npm install axios
+npm start
+```
+
+### Backend
+
+```bash
+mkdir backend
+cd backend
+npm init -y
+npm install express cors axios body-parser dotenv
+
+```
+
+> Ensure backend `.env` contains `N8N_WEBHOOK_URL` if using dynamic n8n URLs.
+
+### n8n Workflow
+
+* Import the workflow from `n8n-workflow/workflow.json`
+* Set the webhook URL in the backend to match your n8n trigger
+* Set up email credentials in the `Send Email` node
+
+## Test the System
+
+1. Start frontend, backend, and n8n
+2. Submit the lead form
+3. Check your inbox for the notification email
+
+## Deployment URLs
+
+* Frontend: 
+* Backend: 
+* n8n Webhook: `http://localhost:3001/workflow/31Sn6EXHtcyxY9hb/executions/4`
+
+
