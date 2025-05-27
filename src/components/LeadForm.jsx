@@ -3,6 +3,8 @@ import { Container, Form, FormGroup, Label, Input, Button, Alert } from "reactst
 import validator from "validator";
 import "./form.css";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+
 const LeadForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -22,9 +24,7 @@ const LeadForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
+    if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!validator.isEmail(formData.email)) {
@@ -43,23 +43,19 @@ const LeadForm = () => {
 
     setLoading(true);
     try {
-      console.log("Sending request with data:", formData);
-    const response = await fetch("https://your-backend.onrender.com/api/leads", {
+      const response = await fetch(`${API_URL}/api/leads`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log("Response from backend:", data);
       if (!response.ok) {
-        throw new Error(data.error || "Failed to submit lead");
+        throw new Error(data.error || response.statusText || "Failed to submit lead");
       }
       setSuccess("Lead submitted successfully! Our team will reach out soon.");
       setFormData({ name: "", email: "", company: "", message: "" });
+      setTimeout(() => setSuccess(""), 5000);
     } catch (error) {
-      console.log("Submission Error:", error.message);
       setErrors({ submit: error.message || "Failed to submit lead. Please try again later." });
     } finally {
       setLoading(false);
@@ -82,8 +78,9 @@ const LeadForm = () => {
             onChange={handleChange}
             invalid={!!errors.name}
             placeholder="Enter your name"
+            aria-describedby="name-error"
           />
-          {errors.name && <div className="error-message">{errors.name}</div>}
+          {errors.name && <div id="name-error" className="error-message">{errors.name}</div>}
         </FormGroup>
         <FormGroup>
           <Label for="email">Email *</Label>
@@ -95,8 +92,9 @@ const LeadForm = () => {
             onChange={handleChange}
             invalid={!!errors.email}
             placeholder="Enter your email"
+            aria-describedby="email-error"
           />
-          {errors.email && <div className="error-message">{errors.email}</div>}
+          {errors.email && <div id="email-error" className="error-message">{errors.email}</div>}
         </FormGroup>
         <FormGroup>
           <Label for="company">Company</Label>
