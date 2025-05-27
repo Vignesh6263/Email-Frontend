@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400&display=swap");
+
+
+.lead-form-container {
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.9); /* Deep black with slight transparency */
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.3); /* Neon-blue shadow */
+  border: 1px solid #00bfff; /* Neon-blue border */
+  margin: 0 auto;
+}
+
+
+.form-title {
+  font-family: "Orbitron", sans-serif;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  text-shadow: 0 0 8px #00bfff; /* Neon-blue glow */
+}
+
+
+.lead-form label {
+  color: #ffffff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+}
+
+
+.lead-form input,
+.lead-form textarea {
+  background: #1a1a1a;
+  border: none;
+  border-bottom: 2px solid #00bfff; 
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.lead-form input:focus,
+.lead-form textarea:focus {
+  border-bottom: 2px solid #00bfff;
+  box-shadow: 0 0 8px #00bfff; 
+  outline: none;
+}
+
+
+.lead-form .btn-primary {
+  background: #00bfff; 
+  border: none;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  width: 100%;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.lead-form .btn-primary:hover {
+  background: #00bfff;
+  box-shadow: 0 0 12px #00bfff; 
+}
+
+.error-message {
+  color: #ff4444;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  text-shadow: 0 0 3px #ff4444;
+}
+
+.alert {
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 15px;
+}
