@@ -58,7 +58,7 @@ npm install express cors axios body-parser dotenv
 
 ## Deployment URLs
 
-* Frontend: 
+* Frontend: https://email-frontend-ashy.vercel.app/
 * Backend: 
 * n8n Webhook: `http://localhost:3001/workflow/31Sn6EXHtcyxY9hb/executions/4`
 
